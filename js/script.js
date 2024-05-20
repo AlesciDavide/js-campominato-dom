@@ -27,7 +27,7 @@ startGameButton.addEventListener('click', function(){
 /* riempio un'array con le bombe generate casualmente */
 let arrayTotBombs = [];
 for(let i = 0; arrayTotBombs.length < 16; i++){
-    arrayTotBombs[i] = checkBombNumber(arrayTotBombs, 100);
+    arrayTotBombs[i] = checkBombNumber(arrayTotBombs, difficulty);
 }
 
 
@@ -41,22 +41,30 @@ for(let i = 0; arrayTotBombs.length < 16; i++){
             divElements.classList.add(valueClass, 'my_flex');
             divElements.append(i+1);
             mycontainerEl.appendChild(divElements);
+
+
             divElements.addEventListener('click', function(){
-                divElements.classList.add('bgActive');
-                console.log(i+1);
+                console.log(divElements.classList.contains('bgActive_bomb', 'bgActive', 'end'));
+                if(divElements.classList.contains('bgActive_bomb', 'bgActive', 'end') !== false){
+                    return;
+                }else{
+                    if(arrayTotBombs.includes(i+1) !== true && divElements.classList.contains('bgActive') !== true){
+                            divElements.classList.add('bgActive');
+                            console.log(i+1);
+                    }else if(arrayTotBombs.includes(i+1) !== false){
+                        divElements.classList.add('bgActive_bomb');
+                            console.log(i+1);
+                    }
+                }
             })
         }
 })
 
 
 
-
-
-
-
 function generateNumberRandom(max){
     return Math.floor(Math.random() * ((max + 1) - 1)) + 1;
-}
+};
 
 function checkBombNumber(arrayBomb, max){
     let numberRandom;
@@ -71,5 +79,5 @@ function checkBombNumber(arrayBomb, max){
             return numberRandom;
         }
     }
-}
+};
 

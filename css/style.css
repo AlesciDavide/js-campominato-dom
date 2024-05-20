@@ -101,3 +101,11 @@ div.elements_difficile{
 .bgActive{
     background-color: rgb(55, 53, 223);
 }
+
+.bgActive_bomb{
+    background-color: red;
+}
+
+.end{
+    
+}

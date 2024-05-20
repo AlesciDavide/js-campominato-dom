@@ -1,0 +1,103 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+}
+
+header img{   
+    padding: 10px 0;
+    margin-bottom: 5px;
+    height: 80px;
+}
+
+header div{
+    display: flex;
+    color: black;
+}
+header form > select{
+    cursor: pointer;
+    padding: 15px 40px 15px 40px;
+    border-radius: 10px;
+    border-style: 2px double black;
+    font-weight: 600;
+    background-image: linear-gradient(
+    rgb(31, 115, 148),
+    rgb(11, 7, 240),
+    rgb(31, 115, 148));
+    color: rgb(255, 255, 255);
+    transition: 400ms;
+}
+header form > label{
+    font-size: 2rem;
+}
+
+body{
+    background-image: url(../img/bg1.avif);
+}
+
+
+#startGame{
+        cursor: pointer;
+        padding: 15px 40px 15px 40px;
+        border-radius: 10px;
+        border-style: 2px double black;
+        font-weight: 600;
+        background-image: linear-gradient(
+        rgb(31, 148, 31),
+        rgb(0, 255, 0),
+        rgb(31, 148, 31)
+        );
+        color: rgb(0, 0, 0);
+        transition: 400ms;
+        margin-left: 10px;
+}
+
+
+
+#container{
+    width: 800px;
+    height: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    margin-top: 30px;
+    background-color: rgb(218, 255, 161);
+}
+
+div.elements_semplice{
+    width: calc(100% / 10);
+}
+
+div.elements_normale{
+    width: calc(100% / 9);
+}
+
+div.elements_difficile{
+    width: calc(100% / 7);
+}
+
+.my_flex{
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+}
+
+.numbers{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+.bgActive{
+    background-color: rgb(55, 53, 223);
+}

@@ -3,7 +3,7 @@ const startGameButton = document.querySelector('button#startGame');
 
 
 startGameButton.addEventListener('click', function(){
-
+/* scelta difficoltà */
     let sceltaDifficoltaEl = document.getElementById("sceltaDifficolta")
     let difficulty = sceltaDifficoltaEl.value;
     let valueClass = '';
@@ -17,11 +17,19 @@ startGameButton.addEventListener('click', function(){
         difficulty = 49;
         valueClass = 'elements_difficile';
     }
+/* se è già presente rimuovo la vecchia griglia con tutti i figli */
 
     const checkcontainerEl = document.getElementById('container');
         if(checkcontainerEl !== null){
             checkcontainerEl.remove();
         }
+
+/* riempio un'array con le bombe generate casualmente */
+let arrayTotBombs = [];
+for(let i = 0; arrayTotBombs.length < 16; i++){
+    arrayTotBombs[i] = checkBombNumber(arrayTotBombs, 100);
+}
+
 
     const containerEl = document.createElement('section');
     containerEl.id= 'container';
@@ -41,4 +49,27 @@ startGameButton.addEventListener('click', function(){
 })
 
 
+
+
+
+
+
+function generateNumberRandom(max){
+    return Math.floor(Math.random() * ((max + 1) - 1)) + 1;
+}
+
+function checkBombNumber(arrayBomb, max){
+    let numberRandom;
+    let isFound = false;
+
+    while(!isFound){
+        numberRandom = generateNumberRandom(max);
+        /* console.log(numberRandom); */
+        if(arrayBomb.includes(numberRandom) !== false){
+            isFound = true;
+        }else{
+            return numberRandom;
+        }
+    }
+}
 

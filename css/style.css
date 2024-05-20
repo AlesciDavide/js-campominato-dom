@@ -108,3 +108,14 @@ div.elements_difficile{
 
 .end{
 }
+
+
+.punteggio{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    margin: 0 auto;
+    background-color: greenyellow;
+    color: black;
+    font-size: 3rem;
+}

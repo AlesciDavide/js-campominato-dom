@@ -38,3 +38,6 @@ Al termine della partita il software deve comunicare il punteggio, cioè il nume
 
 
 ---------------------------
+aggiungo una funzione per la generazione di un numero casuale impostando 2 array, uno pieno di numeri a seconda della difficoltà del gioco e uno vuoto dove andranno inseriti i numeri casuali generati randomicamente 
+dentro l'eventlistner per l'aggiunta delle classi active creo un'if per decidere quale classe se bomba o punto devo mettere con un blocco per l'eventuale click della bomba
+aggiungo una variabile che serve per modificare il punteggio con il click

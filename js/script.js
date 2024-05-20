@@ -32,21 +32,20 @@ startGameButton.addEventListener('click', function(){
         }
         console.log(arrayTotBombs);
     
-    
-
+    /* creo la section che contiene le mie celle */
     const containerEl = document.createElement('section');
     containerEl.id= 'container';
     const myMainEl = document.querySelector('div#totalBlock')
     myMainEl.appendChild(containerEl);
     const mycontainerEl = document.querySelector('#container');
-    
+    /* creo le celle  */
         for(let i = 0; i < difficulty; i++){
             let divElements = document.createElement('div');
             divElements.classList.add(valueClass, 'my_flex');
-            divElements.append(i+1);
+            
             mycontainerEl.appendChild(divElements);
 
-            
+            /* aggiunto e gestisco gli eventi di click nelle celle */
             
             divElements.addEventListener('click', function(){
                 console.log(divElements.classList.contains('bgActive_bomb', 'bgActive', 'end'));
@@ -58,10 +57,10 @@ startGameButton.addEventListener('click', function(){
                             divElements.classList.add('bgActive');
                             points +=1;
                             pointsAs.innerHTML = (`Punti: ${points}`);
+                            divElements.append(i+1);
                             console.log(i+1);
                     }else if(arrayTotBombs.includes(i+1) !== false){
                         divElements.classList.add('bgActive_bomb');
-                        /* addBombActive(arrayTotBombs, valueClass); */
                         endGame(valueClass, arrayTotBombs, difficulty);
                             console.log(i+1);
                     }
@@ -72,12 +71,13 @@ startGameButton.addEventListener('click', function(){
 })
 
 
-
+/* funzione per generare numero random */
 function generateNumberRandom(max){
     let num = Math.floor(Math.random() * ((max + 1) - 1)) + 1;
     return num;
 };
 
+/* funzione per creare l'array di bombe */
 function checkBombNumber(arrayBomb, max){
     let numberRandom;
     let isFound = false;
@@ -94,7 +94,9 @@ function checkBombNumber(arrayBomb, max){
     
 };
 
-
+/* funzione per terminare il gioco.
+aggiungi a tutte le caselle la classe end 
+aggiungi alle caselle relative alle bombe la classe delle bombe */
 
 function endGame(classe, array, difficolta){
     
@@ -110,3 +112,6 @@ function endGame(classe, array, difficolta){
     }
     console.log(classe);
 }
+
+
+

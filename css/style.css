@@ -31,7 +31,7 @@ header form > select{
     rgb(31, 115, 148),
     rgb(11, 7, 240),
     rgb(31, 115, 148));
-    color: rgb(255, 255, 255);
+    color: rgb(255, 136, 0);
     transition: 400ms;
 }
 header form > label{
@@ -100,10 +100,12 @@ div.elements_difficile{
 
 .bgActive{
     background-color: rgb(55, 53, 223);
+    color: white;
 }
 
 .bgActive_bomb{
-    background-color: red;
+    background-image: url(../img/bomb.png);
+    background-size: contain;
 }
 
 .end{

@@ -1,22 +1,21 @@
 const startGameButton = document.querySelector('button#startGame');
-
+let valueClass = '';
 
 
 startGameButton.addEventListener('click', function(){
 /* scelta difficoltà */
     let sceltaDifficoltaEl = document.getElementById("sceltaDifficolta")
     let difficulty = sceltaDifficoltaEl.value;
-    let valueClass = '';
-    if(difficulty == "semplice"){
-        difficulty = 100;
-        valueClass = 'elements_semplice';
-    }else if(difficulty == "normale"){
-        difficulty = 81;
-        valueClass = 'elements_normale';
-    }else{
-        difficulty = 49;
-        valueClass = 'elements_difficile';
-    }
+        if(difficulty == "semplice"){
+            difficulty = 100;
+            valueClass = 'elements_semplice';
+        }else if(difficulty == "normale"){
+            difficulty = 81;
+            valueClass = 'elements_normale';
+        }else{
+            difficulty = 49;
+            valueClass = 'elements_difficile';
+        }
 /* se è già presente rimuovo la vecchia griglia con tutti i figli */
 
     const checkcontainerEl = document.getElementById('container');
@@ -25,11 +24,13 @@ startGameButton.addEventListener('click', function(){
         }
 
 /* riempio un'array con le bombe generate casualmente */
-let arrayTotBombs = [];
-for(let i = 0; arrayTotBombs.length < 16; i++){
-    arrayTotBombs[i] = checkBombNumber(arrayTotBombs, difficulty);
-}
-
+    let arrayTotBombs = [];
+        for(let i = 0; arrayTotBombs.length < 16; i++){
+            arrayTotBombs[i] = checkBombNumber(arrayTotBombs, difficulty);
+        }
+console.log(arrayTotBombs);
+    
+    
 
     const containerEl = document.createElement('section');
     containerEl.id= 'container';
@@ -48,22 +49,25 @@ for(let i = 0; arrayTotBombs.length < 16; i++){
                 if(divElements.classList.contains('bgActive_bomb', 'bgActive', 'end') !== false){
                     return;
                 }else{
-                    if(arrayTotBombs.includes(i+1) !== true && divElements.classList.contains('bgActive') !== true){
+                    if(arrayTotBombs.includes(i+1) !== true && divElements.classList.contains('bgActive') !== true && divElements.classList.contains('end') !== true) {
                             divElements.classList.add('bgActive');
                             console.log(i+1);
                     }else if(arrayTotBombs.includes(i+1) !== false){
                         divElements.classList.add('bgActive_bomb');
+                        /* addBombActive(arrayTotBombs, valueClass); */
+                        endGame(valueClass, arrayTotBombs, difficulty);
                             console.log(i+1);
                     }
                 }
             })
         }
+        
 })
 
 
 
 function generateNumberRandom(max){
-    return Math.floor(Math.random() * ((max + 1) - 1)) + 1;
+    return Math.floor(Math.random() * (((max + 1) - 1)) + 1);
 };
 
 function checkBombNumber(arrayBomb, max){
@@ -72,12 +76,32 @@ function checkBombNumber(arrayBomb, max){
 
     while(!isFound){
         numberRandom = generateNumberRandom(max);
-        /* console.log(numberRandom); */
+        console.log(numberRandom); 
         if(arrayBomb.includes(numberRandom) !== false){
             isFound = true;
-        }else{
-            return numberRandom;
         }
+        return numberRandom;
     }
+    
 };
 
+
+
+
+
+function endGame(classe, array, difficolta){
+    
+    let allCells = document.getElementsByClassName(classe);
+    for(let k = 0; k < difficolta; k++){
+        allCells[k].classList.add('end');
+    }
+    console.log(allCells);
+    console.log(array);
+    for(let i = 0; i < 16; i++){
+        allCells[array[i]].classList.add('bgActive_bomb');
+    }
+    console.log(classe);
+    console.log(allCells[7]);
+
+    
+}

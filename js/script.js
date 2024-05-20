@@ -2,7 +2,6 @@ const startGameButton = document.querySelector('button#startGame');
 let valueClass = '';
 let pointsAs = document.getElementById('punti_assegnati');
 
-
 startGameButton.addEventListener('click', function(){
 /* scelta difficoltà */
     let sceltaDifficoltaEl = document.getElementById("sceltaDifficolta")
@@ -25,12 +24,13 @@ startGameButton.addEventListener('click', function(){
         }
         let points = 0;
         pointsAs.innerHTML = (`Punti: ${points}`);
+
 /* riempio un'array con le bombe generate casualmente */
     let arrayTotBombs = [];
         for(let i = 0; arrayTotBombs.length < 16; i++){
             arrayTotBombs[i] = checkBombNumber(arrayTotBombs, difficulty);
         }
-        console.log(arrayTotBombs);
+        
     
     /* creo la section che contiene le mie celle */
     const containerEl = document.createElement('section');
@@ -52,7 +52,6 @@ startGameButton.addEventListener('click', function(){
                 if(divElements.classList.contains('bgActive_bomb', 'bgActive', 'end') !== false){
                     return;
                 }else{
-                    console.log(i);
                     if(arrayTotBombs.includes(i+1) !== true && divElements.classList.contains('bgActive') !== true && divElements.classList.contains('end') !== true) {
                             divElements.classList.add('bgActive');
                             points +=1;
@@ -66,10 +65,8 @@ startGameButton.addEventListener('click', function(){
                     }
                 }
             })
-        }
-        
+        }  
 })
-
 
 /* funzione per generare numero random */
 function generateNumberRandom(max){
@@ -104,14 +101,7 @@ function endGame(classe, array, difficolta){
     for(let k = 0; k < difficolta; k++){
         allCells[k].classList.add('end');
     }
-    console.log(allCells);
-    console.log(array);
     for(let i = 0; i < 16; i++){
-        console.log(allCells, array[i]);
         allCells[array[i]-1].classList.add('bgActive_bomb');
     }
-    console.log(classe);
 }
-
-
-

@@ -1,7 +1,6 @@
 const startGameButton = document.querySelector('button#startGame');
 let valueClass = '';
 let pointsAs = document.getElementById('punti_assegnati');
-console.log(pointsAs);
 
 
 startGameButton.addEventListener('click', function(){
@@ -54,6 +53,7 @@ startGameButton.addEventListener('click', function(){
                 if(divElements.classList.contains('bgActive_bomb', 'bgActive', 'end') !== false){
                     return;
                 }else{
+                    console.log(i);
                     if(arrayTotBombs.includes(i+1) !== true && divElements.classList.contains('bgActive') !== true && divElements.classList.contains('end') !== true) {
                             divElements.classList.add('bgActive');
                             points +=1;
@@ -105,8 +105,8 @@ function endGame(classe, array, difficolta){
     console.log(allCells);
     console.log(array);
     for(let i = 0; i < 16; i++){
-        allCells[array[i]].classList.add('bgActive_bomb');
+        console.log(allCells, array[i]);
+        allCells[array[i]-1].classList.add('bgActive_bomb');
     }
     console.log(classe);
-    console.log(allCells[7]);
 }
